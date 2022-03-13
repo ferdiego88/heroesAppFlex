@@ -6,6 +6,10 @@ import { HeroeComponent } from './pages/heroe/heroe.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListadoComponent } from './pages/listado/listado.component';
 
+//Routers
+import { HeroesRoutingModule } from './heroes-routing.module';
+
+
 
 
 @NgModule({
@@ -17,7 +21,8 @@ import { ListadoComponent } from './pages/listado/listado.component';
     ListadoComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+   HeroesRoutingModule
   ]
 })
 export class HeroesModule { }
