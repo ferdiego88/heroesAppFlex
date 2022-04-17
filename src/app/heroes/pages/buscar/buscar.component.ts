@@ -20,19 +20,28 @@ export class BuscarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buscando(){
-      this.heroesService.getSugerencias(this.termino)
-        .subscribe(heroes => this.heroes = heroes);
-        if (this.heroes.length > 0!) {
-            this.mostrarMensaje = true;
-        }
-  }
+  buscando() {
+      this.heroesService.getSugerencias(this.termino.trim())
+        .subscribe(heroes => {
+          if(this.termino.trim().length > 1) {
+            if (this.heroes.length === 0) {
+              this.mostrarMensaje = true;
+            } else {
+            this.mostrarMensaje = false;
+            } 
+          } else {
+            this.mostrarMensaje = false;
+          }
+        this.heroes = heroes;
+        });
+      }
 
-  opcionSeleccionada(evento: MatAutocompleteSelectedEvent ) {
-   const heroe: Heroe = evento.option.value;
-    this.termino = heroe.superhero;
-    this.heroesService.getHeroePorId(heroe.id!)
-      .subscribe(heroe => this.heroeSeleccionado = heroe);
-  }
+  // opcionSeleccionada(evento: MatAutocompleteSelectedEvent ) {
+  //  const heroe: Heroe = evento.option.value;
+  //   this.termino = heroe.superhero;
+  //    this.heroeSeleccionado
+  //   this.heroesService.getHeroePorId(heroe.id!)
+  //     .subscribe(heroe => this.heroeSeleccionado = heroe);
+  // }
 
 }
