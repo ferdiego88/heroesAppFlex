@@ -33,6 +33,11 @@ export class AgregarComponent implements OnInit {
                private router: Router) { }
 
   ngOnInit(): void {
+
+    if(!this.router.url.includes('editar')) {
+      return;
+    }
+    
     this.activatedRoute.params
       .pipe(
         switchMap( ({id}) => this.heroesService.getHeroePorId(id))
@@ -58,6 +63,14 @@ export class AgregarComponent implements OnInit {
           this.router.navigate(['/heroes/editar',heroe.id]);
         })
     }
+  }
+
+
+  borrarHeroe () {
+    this.heroesService.borrarHeroe(this.heroe.id!)
+      .subscribe(resp => {
+        this.router.navigate(['/heroes'])
+      })
   }
 
 }
