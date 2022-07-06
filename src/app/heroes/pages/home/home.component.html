@@ -24,7 +24,7 @@
             <span>Añadir Héroe</span>
             </a>
 
-            
+
             <a routerLink="./buscar" mat-list-item
             (click)="sidenav.toggle()">
             <mat-icon mat-list-icon>search</mat-icon>
@@ -39,16 +39,17 @@
                 menu
             </mat-icon>
         </button>
-        
+
         <span class="spacer"></span>
 
-        <button mat-button>
+        <button mat-button
+                (click)="logout()">
             Cerrar Sesión
         </button>
     </mat-toolbar>
 
     <div class="container">
-        
+
         <router-outlet></router-outlet>
     </div>
 </mat-sidenav-container>
